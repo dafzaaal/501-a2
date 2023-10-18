@@ -42,6 +42,20 @@ class Inspector {
 
           printConstructorAndInfo(obj);
 
+
+
+
+            /*
+              Helper method which prints out all fields as well as...
+
+                1. their type
+                2. their modifier
+
+           */
+
+           printFields(obj);
+
+
         Class<?>objClass = obj.getClass();
 
         System.out.println("\n");
@@ -159,6 +173,17 @@ class Inspector {
         }
         System.out.println("\n \n");
         System.out.println("---- END OF PRINTING CONSTRUCTOR AND CONSTRUCTOR INFORMATION ----");
+    }
+
+
+    public void printFields(Object obj) {
+        Class<?> objClass = obj.getClass();
+        for(Field f : objClass.getDeclaredFields()) {
+            f.setAccessible(true);
+            System.out.println("Field Name: " + f.getName());
+            System.out.println("Field Type: " + f.getType().getName());
+            System.out.println("Field Modifier: " + Modifier.toString(f.getModifiers()));
+        }
     }
 
 
