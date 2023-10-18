@@ -11,6 +11,10 @@ class Inspector {
         
         printSuperClass(obj);
 
+
+        // Call helper method to print all interfaces used by a class
+        printInterfaces(obj);
+
         Class<?>objClass = obj.getClass();
 
         System.out.println("\n");
@@ -83,6 +87,22 @@ class Inspector {
         }
         System.out.println("\n \n");
         System.out.println("---- END OF PRINTING SUPERCLASS ----");
+    }
+
+
+
+    // helper method that prints out all interfaces of a given object
+    public void printInterfaces(Object obj) {
+        Class<?> objClass = obj.getClass();
+        System.out.println("---- PRINT INTERFACES ---- \n \n");
+        Class[] interfaces = objClass.getInterfaces();
+
+        for(int i = 0; i < interfaces.length; i++) {
+            String interfaceName = interfaces[i].getName();
+            System.out.println("Interface Name: " + interfaceName);
+        }
+        System.out.println("\n \n");
+        System.out.println("---- END OF PRINTING ALL INTERFACES ----");
     }
 
 
