@@ -12,8 +12,24 @@ class Inspector {
         printSuperClass(obj);
 
 
+
+
+
         // Call helper method to print all interfaces used by a class
         printInterfaces(obj);
+
+        
+
+
+        // Helper method to print all methods the class decarles as well as...
+        /* 
+            1. Exceptions thrown
+            2. Parameter types
+            3. Return type
+            4. The modifiers
+         */
+
+         printMethodsAndMethodInfo(obj);
 
         Class<?>objClass = obj.getClass();
 
@@ -103,6 +119,22 @@ class Inspector {
         }
         System.out.println("\n \n");
         System.out.println("---- END OF PRINTING ALL INTERFACES ----");
+    }
+
+
+    public void printMethodsAndMethodInfo(Object obj) {
+        Class<?> objClass = obj.getClass();
+        System.out.println("---- PRINT ALL METHODS ---- \n \n");
+        for (Method method : objClass.getDeclaredMethods()) {
+            System.out.println(method.getName());
+            System.out.println("Exceptions Thrown: " + method.getExceptionTypes());
+            System.out.println("Parameter Types: " + method.getParameterTypes());
+            System.out.println("Return Types: " + method.getReturnType());
+            System.out.println("Modifiers: " + method.getModifiers());
+        }
+        System.out.println("\n \n");
+        System.out.println("---- END OF PRINTING ALL METHODS ----");
+
     }
 
 
