@@ -4,6 +4,13 @@ import java.lang.reflect.*;
 class Inspector {
     public void inspect(Object obj, boolean recursive) {
 
+        // Get name of declaring class using getDeclaringClass
+        System.out.println(obj.getClass().getDeclaringClass());
+
+        // Get the name of the immediate superclass
+        
+        printSuperClass(obj);
+
         Class<?>objClass = obj.getClass();
 
         System.out.println("\n");
@@ -52,40 +59,6 @@ class Inspector {
 
 
 
-        System.out.println("---- PRINTING SUPER CLASS ---- \n \n");
-        Class<?> superClass = obj.getClass().getSuperclass();
-        if(superClass != null) {
-            System.out.println("Superclass Name:" + superClass.getName());
-        }
-        else {
-            System.out.println("No Superclass Found.");
-        }
-        System.out.println("\n \n");
-        System.out.println("---- END OF PRINTING SUPERCLASS ----");
-
-
-        System.out.println("---- PRINTING SUPER CLASS ---- \n \n");
-        if(superClass != null) {
-            System.out.println("Superclass Name:" + superClass.getName());
-        }
-        else {
-            System.out.println("No Superclass Found.");
-        }
-        System.out.println("\n \n");
-        System.out.println("---- END OF PRINTING SUPERCLASS ----");
-          
-
-        if(superClass != null) {
-            System.out.println("Superclass Name:" + superClass.getName());
-        }
-        else {
-            System.out.println("No Superclass Found.");
-        }
-        System.out.println("\n \n");
-        System.out.println("---- END OF PRINTING SUPERCLASS ----");
-
-
-
 
         System.out.println("---- PRINT INTERFACES ---- \n \n");
         Class[] interfaces = objClass.getInterfaces();
@@ -97,6 +70,19 @@ class Inspector {
         System.out.println("\n \n");
         System.out.println("---- END OF PRINTING ALL INTERFACES ----");
 
+    }
+
+    public void printSuperClass(Object obj) {
+        System.out.println("---- PRINTING SUPER CLASS ---- \n \n");
+        Class<?> superClass = obj.getClass().getSuperclass();
+        if(superClass != null) {
+            System.out.println("Superclass Name:" + superClass.getName());
+        }
+        else {
+            System.out.println("No Superclass Found.");
+        }
+        System.out.println("\n \n");
+        System.out.println("---- END OF PRINTING SUPERCLASS ----");
     }
 
 
