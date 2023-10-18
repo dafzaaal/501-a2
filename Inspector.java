@@ -18,7 +18,7 @@ class Inspector {
         // Call helper method to print all interfaces used by a class
         printInterfaces(obj);
 
-        
+
 
 
         // Helper method to print all methods the class decarles as well as...
@@ -30,6 +30,17 @@ class Inspector {
          */
 
          printMethodsAndMethodInfo(obj);
+
+
+
+        /*
+            Helper method to print out constructor info a class declares as well as...
+            
+                1. the parameter types
+                2. the modifiers
+          */
+
+          printConstructorAndInfo(obj);
 
         Class<?>objClass = obj.getClass();
 
@@ -136,6 +147,20 @@ class Inspector {
         System.out.println("---- END OF PRINTING ALL METHODS ----");
 
     }
+
+    public void printConstructorAndInfo(Object obj) {
+        Class<?> objClass = obj.getClass();
+        System.out.println("---- PRINT CONSTRUCTOR AND CONSTRUCTOR INFORMATION ---- \n \n");
+
+        for(Constructor<?> constructor : objClass.getDeclaredConstructors()) {
+            System.out.println("Constructor Name: " + constructor.getName());
+            System.out.println("Modifiers: " + Modifier.toString(constructor.getModifiers()));
+            System.out.println("Parameter Types: " + Arrays.toString(constructor.getParameterTypes()));
+        }
+        System.out.println("\n \n");
+        System.out.println("---- END OF PRINTING CONSTRUCTOR AND CONSTRUCTOR INFORMATION ----");
+    }
+
 
 
 }
